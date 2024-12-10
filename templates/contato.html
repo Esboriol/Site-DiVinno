@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiVinno-Contato</title>
+    <link rel="stylesheet" href="../static/css/contato.css">
+    <link rel="stylesheet" href="../static/css/responder.css">
+    <link rel="stylesheet" href="../static/css/rodape.css">
+    <link rel="stylesheet" href="../static/css/botao.css">
+    <link rel="stylesheet" href="../static/css/cabecalho.css">
+    <link rel="icon" href="../static/img/Logo-1.png" type="image/x-icon">
+</head>
+<body>
+    <div class="logo-container">
+        <div>
+            <a href="{{ url_for('inicial') }}">
+                <img href="/" class="logo" src="{{ url_for('static', filename='img/logo.png') }}">
+            </a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list">
+            <li><a href="{{ url_for('inicial') }}" class="sobre">Sobre a divinno</a></li>
+            <div class="separator"></div>
+            <li><a href="{{ url_for('cardapio') }}" class="cardapio">Cardapio</a></li>
+        </ul>
+    </div>
+
+     <section class="container">
+        <form action="#" method="post">
+            <div class="form-sections">
+                <div class="left-section">
+                    <input type="text" id="nome" name="nome" placeholder="Nome">
+
+                    <input type="text" id="sobrenome" name="sobrenome" placeholder="Sobrenome">
+
+                    <input type="email" id="email" name="email" placeholder="Email">
+
+                    <input type="tel" id="telefone" name="telefone" placeholder="Telefone">
+                </div>
+
+                <div class="right-section">
+                    <label>Para qual finalidade é a mensagem?</label>
+                    <div>
+                        <input type="radio" id="atendimento" name="finalidade" value="atendimento">
+                        <label for="atendimento">Atendimento</label><br>
+                        <input type="radio" id="elogio" name="finalidade" value="elogio">
+                        <label for="elogio">Elogio</label><br>
+                        <input type="radio" id="qualidade" name="finalidade" value="qualidade">
+                        <label for="qualidade">Qualidade</label><br>
+                        <input type="radio" id="outro" name="finalidade" value="outro">
+                        <label for="outro">Outro</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Caixa de mensagem agora abaixo da finalidade da mensagem -->
+            <div class="message-section">
+                <textarea id="mensagem" placeholder="Mensagem" style="font-family: Arial, sans-serif;" name="mensagem" rows="4" cols="50"></textarea>
+            </div>
+
+            <div class="center-section">
+                <button type="submit">Concluído</button>
+            </div>
+        </form>
+    </section>
+
+    <div class="logo-content-rodape">
+        <div>
+            <a href="{{ url_for('inicial')}}">
+                <img href="/" class="logo-rodape" src="{{ url_for('static', filename='img/logo.png') }}">
+            </a>
+        </div>
+        <div class="visivel">
+            <hr class="linha">
+            <div class="paragrafos">
+                <p>© 2024 Divinno, Todos os direitos reservados </p>
+                <p>Desenvolvido por:Otávio Esboriol da Silva e Guilherme Colleti da Silva</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        };
+
+        // Animação para o slogan e seções
+        window.addEventListener('DOMContentLoaded', function() {
+            const slogan = document.querySelector('.letra_imagem');
+            slogan.classList.add('visible');
+
+            const sections = document.querySelectorAll('.section');
+
+            // Função para verificar se o dispositivo é móvel
+            const isMobileDevice = () => {
+                return window.innerWidth <= 768; // Ajuste conforme necessário
+            };
+
+            if (isMobileDevice()) {
+                // Adiciona a classe visível para dispositivos móveis
+                sections.forEach(section => {
+                    section.classList.add('visible');
+                });
+            } else {
+                // Para desktops, adicionar animação na rolagem
+                window.addEventListener('scroll', function() {
+                    sections.forEach(section => {
+                        const rect = section.getBoundingClientRect();
+                        if (rect.top < window.innerHeight - 50) {
+                            section.classList.add('visible');
+                        }
+                    });
+                });
+            }
+        });
+
+        const mobileMenu = document.getElementById("mobile-menu");
+        const navList = document.querySelector(".nav-list");
+
+        mobileMenu.addEventListener("click", () => {
+            navList.classList.toggle("active"); // Alterna a classe 'active' para mostrar/ocultar o menu
+        });
+</script>
+</html>

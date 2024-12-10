@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiVinno</title>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/rodape.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/botao.css') }}">
+    <link rel="icon" href="../static/img/Logo-1.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cabecalho.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/popup.css') }}">
+</head>
+<body>
+
+    <div id="age-verification-overlay" class="overlay">
+        <div class="popup">
+            <h2>Você tem mais de 18 anos?</h2>
+            <div class="buttons">
+                <button id="yes-button">Sim</button>
+                <button id="no-button">Não</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="logo-container">
+        <div>
+            <a href="{{ url_for('inicial')}}">
+                <img href="/" class="logo" src="{{ url_for('static', filename='img/logo.png') }}">
+            </a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list">
+            <li><a href="{{ url_for('cardapio')}}" class="cardapio">Cardápio</a></li>
+            <div class="separator"></div>
+            <li><a href="{{ url_for('contato')}}" class="contato">Contato</a></li>
+        </ul>
+
+    </div>
+
+     <div class="primeiro">
+        <h2 class="letra_imagem">"O melhor vinho, em qualquer horário e lugar"</h2>
+    </div>
+
+    <!-- Content Section -->
+    <div class="rotulos-container">
+        <!-- Rotulos - Missão, Visão, Valores -->
+        <div class="rotulo">
+            <img src="../static/img/rotulo-certo.png" alt="Imagem do rótulo">
+            <div class="texto-rotulo">
+                <h3 class="titulo-rotulo">Missão</h3>
+                <p class="subtitulo-rotulo">Oferecer vinhos de alta qualidade
+                    que tornem cada momento único e especial, garantindo
+                    experiências marcantes e inesquecíveis. Nossa missão é buscar a
+                    excelência em cada garrafa, inspirando sorrisos e celebrando
+                    a vida junto a nossos clientes.</p>
+            </div>
+        </div>
+
+        <div class="rotulo">
+            <img src="../static/img/rotulo-certo.png" alt="Imagem do rótulo">
+            <div class="texto-rotulo">
+                <h3 class="titulo-rotulo">Visão</h3>
+                <p class="subtitulo-rotulo">Ser reconhecida como a principal rede de vinhos no Brasil,
+                    destacando-se por tornar o vinho acessível
+                    e valorizado por todos. Nosso objetivo é liderar o mercado, oferecendo um modelo inovador e conveniente
+                    que encante e fidelize consumidores.</p>
+            </div>
+        </div>
+
+        <div class="rotulo">
+            <img src="../static/img/rotulo-certo.png" alt="Imagem do rótulo">
+            <div class="texto-rotulo">
+                <h3 class="titulo-rotulo">Valores</h3>
+                <p class="subtitulo-rotulo">Inovação: Aplicamos tecnologia moderna para transformar a experiência do consumidor.
+                Acessibilidade: Tornamos o vinho uma escolha simples para todos.
+                Paixão: Guiados pelo amor ao vinho, buscamos a perfeição.
+                Sustentabilidade: Agimos de forma ética e responsável em todo o processo.</p>
+            </div>
+        </div>
+    </div>
+
+    <h1>Descubra o SEU VINHO Ideal</h1>
+    <div class="seta">
+        <img style="width: 5%;" src="../static/img/seta.png" alt="seta">
+    </div>
+
+    <div id="plate">
+        <!-- Bottle and Glass -->
+        <div id="bottle" onclick="window.location.href='/chat'">
+            <div class="cork"></div>
+            <div class="neck"></div>
+            <div class="body">
+                <div class="label"></div>
+                <div class="label-shadow"></div>
+            </div>
+        </div>
+
+        <div id="glass">
+            <div class="bowl">
+                <div class="wine"></div>
+            </div>
+            <div class="stem"></div>
+            <div class="foot"></div>
+        </div>
+    </div>
+
+    <div class="logo-content-rodape">
+        <div>
+            <a href="{{ url_for('inicial')}}">
+                <img href="/" class="logo-rodape" src="{{ url_for('static', filename='img/logo.png') }}">
+            </a>
+        </div>
+        <div class="visivel">
+            <hr class="linha">
+            <div class="paragrafos">
+                <p>© 2024 Divinno, Todos os direitos reservados </p>
+                <p>Desenvolvido por:Otávio Esboriol da Silva e Guilherme Colleti da Silva</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navList = document.querySelector('.nav-list');
+
+            menuToggle.addEventListener('click', function() {
+                navList.classList.toggle('active');
+            });
+        });
+
+        // Scroll para o topo quando a página for recarregada
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        };
+
+        // Animação para o slogan e seções
+        window.addEventListener('DOMContentLoaded', function() {
+            const slogan = document.querySelector('.letra_imagem');
+            slogan.classList.add('visible');
+
+            const sections = document.querySelectorAll('.section');
+
+            // Função para verificar se o dispositivo é móvel
+            const isMobileDevice = () => {
+                return window.innerWidth <= 768; // Ajuste conforme necessário
+            };
+
+            if (isMobileDevice()) {
+                // Adiciona a classe visível para dispositivos móveis
+                sections.forEach(section => {
+                    section.classList.add('visible');
+                });
+            } else {
+                // Para desktops, adicionar animação na rolagem
+                window.addEventListener('scroll', function() {
+                    sections.forEach(section => {
+                        const rect = section.getBoundingClientRect();
+                        if (rect.top < window.innerHeight - 50) {
+                            section.classList.add('visible');
+                        }
+                    });
+                });
+            }
+        });
+
+          window.addEventListener('scroll', function() {
+        const wineImage = document.querySelector('.wine-image');
+        const labelContainer = document.querySelector('.label-container');
+
+        // Verifica a posição da imagem
+        const rect = wineImage.getBoundingClientRect();
+
+        // Quando a imagem do vinho aparece na tela
+        if (rect.top < window.innerHeight) {
+            // Expande a altura da container para revelar os rótulos
+            labelContainer.style.height = 'auto';
+
+            // Animar os rótulos
+            const labels = document.querySelectorAll('.label');
+            labels.forEach((label, index) => {
+                setTimeout(() => {
+                    label.style.opacity = 1;
+                    label.style.transform = 'translateY(0)';
+                }, index * 300);  // Atrasa a animação dos rótulos para criar um efeito de sequência
+            });
+        }
+    });
+
+
+        window.addEventListener('scroll', function() {
+        const labels = document.querySelectorAll('.rotulo');
+
+        labels.forEach(label => {
+            const rect = label.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                label.style.opacity = 1;
+                label.style.transform = 'translateY(0)';
+            }
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Elementos relacionados ao pop-up
+        const overlay = document.getElementById('age-verification-overlay');
+        const yesButton = document.getElementById('yes-button');
+        const noButton = document.getElementById('no-button');
+
+        // Exibe o pop-up assim que a página é carregada
+        if (overlay) {
+            overlay.style.display = 'flex'; // Mostra o pop-up
+
+            // Botão "Sim" - permite acesso ao site
+            yesButton?.addEventListener('click', function () {
+                overlay.style.display = 'none'; // Esconde o pop-up
+            });
+
+            // Botão "Não" - redireciona para outro site
+            noButton?.addEventListener('click', function () {
+                window.location.href = 'https://www.google.com'; // Substitua pela URL desejada
+            });
+        }
+
+        // Animações de rolagem
+        const sections = document.querySelectorAll('.rotulo, .section');
+
+        // Detecta dispositivos móveis
+        const isMobileDevice = () => window.innerWidth <= 768;
+
+        const handleScroll = () => {
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) {
+                    section.classList.add('visible'); // Adiciona classe visível ao elemento
+                }
+            });
+        };
+
+        if (isMobileDevice()) {
+            // Em dispositivos móveis, torna todos os elementos visíveis automaticamente
+            sections.forEach(section => section.classList.add('visible'));
+        } else {
+            // Em dispositivos desktop, aplica a lógica de animação ao rolar
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Chamada inicial para animação ao carregar a página
+        }
+
+        // Animação para o slogan
+        const slogan = document.querySelector('.letra_imagem');
+        if (slogan) {
+            slogan.classList.add('visible'); // Adiciona classe visível ao slogan
+        }
+    });
+
+    </script>
+</body>
+</html>

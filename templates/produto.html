@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ vinho.nome }}</title>
+    <link rel="icon" href="../static/img/Logo-1.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/produto.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cabecalho.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/botao.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rodape.css') }}">
+    <link rel="stylesheet" href=" {{ url_for('static', filename='css/outro.css') }}">
+</head>
+<body>
+    <div class="logo-container">
+        <div>
+            <a href="{{ url_for('inicial')}}">
+                <img href="/" class="logo" src="{{ url_for('static', filename='img/logo.png') }}">
+            </a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list">
+            <li><a href="{{ url_for('inicial') }}" class="sobre">Sobre a Divinno</a></li>
+            <div class="separator"></div>
+            <li><a href="{{ url_for('cardapio')}}" class="cardapio">Cardapio</a></li>
+            <div class="separator"></div>
+            <li><a href="{{ url_for('contato')}}" class="contato">Contato</a></li>
+
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1>{{ vinho.nome }}</h1>
+        <div class="vinho-detalhes">
+            <!-- Imagem do vinho -->
+            <div class="imagem-vinho">
+                <img src="{{ url_for('static', filename=vinho['imagem'].split('static/')[1]) }}" alt="{{ vinho['nome'] }}">
+            </div>
+
+            <!-- Informações do vinho -->
+            <div class="informacoes-vinho">
+                <p><strong>Tipo:</strong> {{ vinho.tipo }}</p>
+                <p><strong>Região:</strong> {{ vinho.regiao }}</p>
+                <p><strong>Safra:</strong> {{ vinho.safra }}</p>
+                <p><strong>Preço:</strong> R$ {{ vinho.preco }}</p>
+            </div>
+        </div>
+        <a href="{{ url_for('cardapio') }}">
+            <button class="botao-voltar">Voltar</button>
+        </a>
+    </div>
+
+    <div class="logo-content-rodape">
+        <div>
+            <a href="{{ url_for('inicial')}}">
+                <img href="/" class="logo-rodape" src="{{ url_for('static', filename='img/logo.png') }}">
+            </a>
+        </div>
+        <br>
+        <div class="visivel">
+            <hr class="linha">
+            <div class="paragrafos">
+                <p>© 2024 Divinno, Todos os direitos reservados </p>
+                <p>Desenvolvido por:Otávio Esboriol da Silva e Guilherme Colleti da Silva</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navList = document.querySelector('.nav-list');
+
+            menuToggle.addEventListener('click', function() {
+                navList.classList.toggle('active');
+            });
+        });
+
+        // Scroll para o topo quando a página for recarregada
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        };
+
+        // Animação para o slogan e seções
+        window.addEventListener('DOMContentLoaded', function() {
+            const slogan = document.querySelector('.letra_imagem');
+            slogan.classList.add('visible');
+
+            const sections = document.querySelectorAll('.section');
+
+            // Função para verificar se o dispositivo é móvel
+            const isMobileDevice = () => {
+                return window.innerWidth <= 768; // Ajuste conforme necessário
+            };
+
+            if (isMobileDevice()) {
+                // Adiciona a classe visível para dispositivos móveis
+                sections.forEach(section => {
+                    section.classList.add('visible');
+                });
+            } else {
+                // Para desktops, adicionar animação na rolagem
+                window.addEventListener('scroll', function() {
+                    sections.forEach(section => {
+                        const rect = section.getBoundingClientRect();
+                        if (rect.top < window.innerHeight - 50) {
+                            section.classList.add('visible');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

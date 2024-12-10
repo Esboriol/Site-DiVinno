@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiVinno-Chatbot IA</title>
+    <link rel="icon" href="../static/img/Logo-1.png" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/chat.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cabecalho.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/rodape.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/botao.css') }}">
+    <script src="../static/js/chat.js"></script>
+
+</head>
+<body>
+
+    <div class="logo-container">
+        <div>
+            <a href="{{ url_for('inicial')}}">
+                <img href="/" class="logo" src="../static/img/logo.png">
+            </a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-list">
+            <li><a href="{{ url_for('inicial') }}" class="sobre">Sobre a Divinno</a></li>
+            <div class="separator"></div>
+            <li><a href="{{ url_for('cardapio')}}" class="cardapio">Cardapio</a></li>
+            <div class="separator"></div>
+            <li><a href="{{ url_for('contato')}}" class="contato">Contato</a></li>
+        </ul>
+    </div>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>🍷 Chatbot - DiVinno 🍷</h2>
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="message bot">
+                <span>Olá, sou o DivinnoBot e estou aqui para te ajudar a descobrir qual o melhor tipo de vinho para a sua ocasião! Descreva por favor para mim qual a sua ocasião, emoção, senação, etc. Faça uma descrição detalhada e te direi qual o melhor tipo de vinho!</span>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input
+                type="text"
+                id="userInput"
+                placeholder="Digite sua mensagem e aperte [Enter]"
+                autocomplete="off"
+                onkeypress="checkEnter(event)">
+        </div>
+    </div>
+
+    <div class="logo-content-rodape">
+        <div>
+            <a href="{{ url_for('inicial')}}">
+                <img href="/" class="logo-rodape" src="../static/img/logo.png">
+            </a>
+        </div>
+        <div class="visivel">
+            <hr class="linha">
+            <div class="paragrafos">
+                <p>© 2024 Divinno, Todos os direitos reservados </p>
+                <p>Desenvolvido por:Otávio Esboriol da Silva e Guilherme Colleti da Silva</p>
+            </div>
+        </div>
+    </div>
+
+<script>
+    window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        };
+
+        // Animação para o slogan e seções
+        window.addEventListener('DOMContentLoaded', function() {
+            const slogan = document.querySelector('.letra_imagem');
+            slogan.classList.add('visible');
+
+            const sections = document.querySelectorAll('.section');
+
+            // Função para verificar se o dispositivo é móvel
+            const isMobileDevice = () => {
+                return window.innerWidth <= 768; // Ajuste conforme necessário
+            };
+
+            if (isMobileDevice()) {
+                // Adiciona a classe visível para dispositivos móveis
+                sections.forEach(section => {
+                    section.classList.add('visible');
+                });
+            } else {
+                // Para desktops, adicionar animação na rolagem
+                window.addEventListener('scroll', function() {
+                    sections.forEach(section => {
+                        const rect = section.getBoundingClientRect();
+                        if (rect.top < window.innerHeight - 50) {
+                            section.classList.add('visible');
+                        }
+                    });
+                });
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+        // Elementos relacionados ao pop-up
+        const overlay = document.getElementById('age-verification-overlay');
+        const yesButton = document.getElementById('yes-button');
+        const noButton = document.getElementById('no-button');
+
+        // Exibe o pop-up assim que a página é carregada
+        if (overlay) {
+            overlay.style.display = 'flex'; // Mostra o pop-up
+
+            // Botão "Sim" - permite acesso ao site
+            yesButton?.addEventListener('click', function () {
+                overlay.style.display = 'none'; // Esconde o pop-up
+            });
+
+            // Botão "Não" - redireciona para outro site
+            noButton?.addEventListener('click', function () {
+                window.location.href = 'https://www.google.com'; // Substitua pela URL desejada
+            });
+        }
+
+        // Animações de rolagem
+        const sections = document.querySelectorAll('.rotulo, .section');
+
+        // Detecta dispositivos móveis
+        const isMobileDevice = () => window.innerWidth <= 768;
+
+        const handleScroll = () => {
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) {
+                    section.classList.add('visible'); // Adiciona classe visível ao elemento
+                }
+            });
+        };
+
+        if (isMobileDevice()) {
+            // Em dispositivos móveis, torna todos os elementos visíveis automaticamente
+            sections.forEach(section => section.classList.add('visible'));
+        } else {
+            // Em dispositivos desktop, aplica a lógica de animação ao rolar
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Chamada inicial para animação ao carregar a página
+        }
+
+        // Animação para o slogan
+        const slogan = document.querySelector('.letra_imagem');
+        if (slogan) {
+            slogan.classList.add('visible'); // Adiciona classe visível ao slogan
+        }
+    });
+
+
+        const mobileMenu = document.getElementById("mobile-menu");
+        const navList = document.querySelector(".nav-list");
+
+        mobileMenu.addEventListener("click", () => {
+            navList.classList.toggle("active"); // Alterna a classe 'active' para mostrar/ocultar o menu
+        });
+</script>
+
+</body>
+</html>
