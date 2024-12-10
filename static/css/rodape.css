@@ -1,59 +1,56 @@
-hr {
-    border: 0; /* Remove a borda padrão */
-    height: 2px; /* Altura da linha */
-    background-color: red; /* Cor da linha */
-    margin: 20px 0; /* Margens superior e inferior */
-    width: 110%; /* Faz com que a linha ocupe 100% da largura da tela */
-    position: relative;
-    left: 0; /* Garante que a linha comece do lado esquerdo */
-}
-
+/* Rodapé */
 .logo-content-rodape {
-    display: flex; /* Usa flexbox para alinhar os itens */
-    align-items: center; /* Alinha verticalmente os itens no centro */
-    margin-bottom: 01px;
-    padding: 10px;
+    display: flex;
+    align-items: center;
     background-color: #722F37;
+    padding: 10px 20px;
+    justify-content: flex-start; /* Logo à esquerda */
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto; /* Garante que o rodapé fique no final da página */
 }
 
+/* Logo à esquerda */
 .logo-rodape {
     max-width: 100px;
-    height: auto;
     width: 90px;
     cursor: pointer;
 }
 
-.linha {
-    height: 2px; /* Altura da linha */
-    background-color: white; /* Cor da linha */
-    margin: 20px 0; /* Margens superior e inferior */
-}
-
+/* Parágrafos (texto abaixo da linha) */
 .paragrafos {
-    display: flex; /* Usando flexbox para alinhar os parágrafos */
-    justify-content: space-between; /* Alinha os parágrafos nos extremos (esquerda e direita) */
-    width: 100%; /* Garante que o contêiner ocupe 100% da largura da tela */
-    align-items: center; /* Alinha os itens verticalmente no centro */
+    display: flex;
+    justify-content: space-between; /* Coloca o texto nos extremos (esquerda e direita) */
+    width: calc(100% - 140px); /* Garante que o texto fique à direita da logo */
+    margin-top: 20px; /* Distância entre a linha e o texto */
+    padding-left: 20px; /* Move o texto para a direita */
+    transform: translateY(-5px); /* Move o texto para cima */
 }
 
 .paragrafos p {
     color: white;
-    margin: 0; /* Remove margens extras */
-    flex: 1; /* Faz com que cada parágrafo ocupe o mesmo espaço */
-    text-align: center; /* Alinha o texto ao centro */
+    margin: 0;
+    text-align: center;
 }
 
-.visivel {
-    display: block;
-}
-
+/* Ajustes para dispositivos móveis */
 @media (max-width: 768px) {
-    .visivel {
-        display: none;
+    .logo-content-rodape {
+        justify-content: flex-start; /* Logo ainda à esquerda no mobile */
     }
 
-    .logo-rodape {
-        max-width: 200px;
-        width: 135px;
+    .paragrafos {
+        display: none; /* Esconde os parágrafos em telas pequenas */
     }
+}
+
+/* Garante que o rodapé vá até o final da página */
+html, body {
+    height: 100%; /* Garante que o body tenha altura total da tela */
+    margin: 0;
+}
+
+.content {
+    min-height: calc(100vh - 100px); /* Garante que o conteúdo acima do rodapé ocupe o restante da altura */
 }

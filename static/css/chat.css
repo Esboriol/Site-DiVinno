@@ -39,6 +39,21 @@ body {
     background-color: #e9ecef;
 }
 
+.chat-window a {
+    color: #722F37; /* Cor vibrante (vermelho) */
+    font-weight: bold; /* Deixa o texto em negrito */
+    text-decoration: none; /* Remove o sublinhado */
+    padding: 5px 10px; /* Espaçamento interno para destacar */
+    border-radius: 5px; /* Bordas arredondadas */
+    text-transform: uppercase; /* Converte o texto para maiúsculo */
+    transition: all 0.3s ease; /* Suaviza transições */
+}
+
+.chat-window a:hover {
+    text-decoration: underline; /* Adiciona o sublinhado no hover */
+    transform: scale(1.1); /* Aumenta levemente o tamanho no hover */
+}
+
 .message {
     margin: 10px 20px;
     padding: 10px;
