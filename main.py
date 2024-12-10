@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, request  # Corrigir a importação
+from flask import Flask, render_template, request, url_for  # Corrigir a importação
 from dotenv import load_dotenv
 import google.generativeai as genai
 import os
@@ -16,7 +16,7 @@ app = Flask(__name__)
 vinhos = [
     {
     "nome": "MIOLO RESERVA PINOT GRIGIO",
-    "id": 1,
+    "id": 0,
     "tipo": "Branco",
     "regiao": "Alentejo",
     "safra": 2020,
@@ -25,7 +25,7 @@ vinhos = [
     },
     {
     "nome": "Mesa Suave Vinhedos do Vale",
-    "id": 2,
+    "id": 1,
     "tipo": "Rosé",
     "regiao": "Provence",
     "safra": 2018,
@@ -34,7 +34,7 @@ vinhos = [
     },
     {
     "nome": "Fino Rosé Moscatel",
-    "id": 3,
+    "id": 2,
     "tipo": "Espumante",
     "regiao": "Champagne",
     "safra": 2012,
@@ -43,7 +43,7 @@ vinhos = [
     },
     {
     "nome": "Poças Porto Tawny",
-    "id": 4,
+    "id": 3,
     "tipo": "Fortificado",
     "regiao": "Porto",
     "safra": 2010,
@@ -52,7 +52,7 @@ vinhos = [
     },
     {
     "nome": "Tokaji Aszu",
-    "id": 5,
+    "id": 4,
     "tipo": "Sobremesa",
     "regiao": "Tokaji",
     "safra": 2016,
@@ -61,7 +61,7 @@ vinhos = [
     },
     {
     "nome": "Santa Julia La Oveja Torrontés",
-    "id": 6,
+    "id": 5,
     "tipo": "Natural",
     "regiao": "Catalunha",
     "safra": 2019,
@@ -70,7 +70,7 @@ vinhos = [
     },
     {
     "nome": "Bordo Seco De Cezaro",
-    "id": 7,
+    "id": 6,
     "tipo": "Orgânico",
     "regiao": "Toscana",
     "safra": 2021,
@@ -79,7 +79,7 @@ vinhos = [
     },
     {
     "nome": "Casa Navaronne Meio Seco",
-    "id": 8,
+    "id": 7,
     "tipo": "Sem álcool",
     "regiao": "Califórnia",
     "safra": 2023,
@@ -88,24 +88,34 @@ vinhos = [
     },
 ]
 
+
 @app.route('/search')
 def search():
-    context = ('Você é um bot de vinhos diversos a serviço da empresa Divinno, seu nome é Divinnobot, sua'
-               'únia e exclusiva função é fazer com que os clientes descubram qual o melhor tipo de vinho'
-               'para as mais demasiadas ocasiões. Apenas responda questões relacionadas à Divinno e sobre'
+    context = ('Você é um bot de vinhos diversos a serviço da empresa Divinno, seu nome é Divinnobot. '
+               'Sua única e exclusiva função é fazer com que os clientes descubram qual o melhor tipo de vinho '
+               'para as mais diversas ocasiões. Apenas responda questões relacionadas à Divinno e sobre '
                'os tipos de vinhos oferecidos.')
 
     prompt = request.args.get('prompt')
     if not prompt:
         return {'message': 'Desculpe, não consegui entender sua pergunta. Pode tentar novamente?'}
 
-    input_ia = f'{context}: {prompt}'
+    # Identifica um vinho baseado no prompt
+    for vinho in vinhos:
+        if vinho["tipo"].lower() in prompt.lower() or vinho["nome"].lower() in prompt.lower():
+            vinho_url = url_for('vinho_detalhado', vinho_id=vinho["id"])
+            return {
+                'message': f'Recomendo o vinho <a href="{vinho_url}" target="_blank">{vinho["nome"]}</a>. Confira mais detalhes.'}
+
+    # Caso nenhum vinho seja identificado diretamente, a IA pode sugerir algo
+    input_ia = f'{context} {prompt}'
     try:
         output = model.generate_content(input_ia)
-        return {'message': output.text}  # Retorna a resposta do modelo
+        return {'message': output.text}
     except Exception as e:
         print(f"Erro ao gerar resposta: {e}")
         return {'message': 'Desculpe, houve um erro ao processar sua solicitação.'}
+
 @app.route("/")
 def inicial():
     return render_template("index.html")
@@ -120,8 +130,8 @@ def contato():
 
 @app.route("/vinho/<int:vinho_id>")
 def vinho_detalhado(vinho_id):
-    if vinho_id < len(vinhos):
-        vinho = vinhos[vinho_id]
+    vinho = next((v for v in vinhos if v["id"] == vinho_id), None)
+    if vinho:
         return render_template("produto.html", vinho=vinho)
     else:
         return "Vinho não encontrado", 404
