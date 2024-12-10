@@ -52,9 +52,8 @@ async function sendMessage() {
     chatWindow.removeChild(loadingMessage);
     const botMessage = document.createElement('div');
     botMessage.className = 'message bot';
-    botMessage.innerHTML = botResponse; // Alterado de innerText para innerHTML
+    botMessage.innerHTML = `<span>${botResponse}</span>`;
     chatWindow.appendChild(botMessage);
-
 
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
@@ -110,3 +109,4 @@ document.getElementById('yesBtn').addEventListener('click', () => {
     document.getElementById('cardapioLink').style.color = '#722F37';
     document.getElementById('contatoLink').style.color = '#722F37';
 });
+
