@@ -52,16 +52,51 @@ async function sendMessage() {
     chatWindow.removeChild(loadingMessage);
     const botMessage = document.createElement('div');
     botMessage.className = 'message bot';
-    botMessage.innerHTML = `<span>${botResponse}</span>`;
+    botMessage.innerHTML = botResponse; // Alterado de innerText para innerHTML
     chatWindow.appendChild(botMessage);
+
 
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
 function checkEnter(event) {
-    if (event.key === 'Enter') {
-        sendMessage();
+    if (event.key === "Enter") {
+        const userInput = document.getElementById("userInput").value;
+        if (userInput.trim() === "") return;
+
+        addMessage(userInput, "user");
+        document.getElementById("userInput").value = "";
+
+        fetch(`/search?prompt=${encodeURIComponent(userInput)}`)
+            .then(response => response.json())
+            .then(data => {
+                const botMessage = data.message;
+
+                // Detecta links na mensagem
+                if (botMessage.includes("http")) {
+                    const linkStart = botMessage.indexOf("http");
+                    const linkEnd = botMessage.indexOf(" ", linkStart) > 0 ? botMessage.indexOf(" ", linkStart) : botMessage.length;
+                    const link = botMessage.substring(linkStart, linkEnd);
+                    const linkText = botMessage.replace(link, `<a href="${link}" target="_blank">${link}</a>`);
+                    addMessage(linkText, "bot");
+                } else {
+                    addMessage(botMessage, "bot");
+                }
+            })
+            .catch(error => {
+                console.error("Erro:", error);
+                addMessage("Desculpe, houve um erro ao processar sua solicitação.", "bot");
+            });
     }
+}
+
+function addMessage(message, type) {
+    const chatWindow = document.getElementById("chatWindow");
+    const messageElement = document.createElement("div");
+    messageElement.classList.add("message", type);
+    messageElement.innerHTML = message; // Aqui o bot irá exibir o link HTML
+    chatWindow.appendChild(messageElement);
+    chatWindow.scrollTop = chatWindow.scrollHeight; // Rola até o final
 }
 
 // Função para habilitar os links quando o usuário clicar em "Sim"
