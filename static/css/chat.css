@@ -1,3 +1,59 @@
+/* Caixa de chat */
+#chatWindow {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 500px;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+/* Mensagens do usuário */
+.message.user {
+    align-self: flex-start; /* Alinha à esquerda */
+    background-color: #f1f1f1;
+    color: black;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+/* Mensagens do bot */
+.message.bot {
+    align-self: flex-end; /* Alinha à direita */
+    background-color: #722F37;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+/* Mensagens com a classe 'loading' */
+.message.loading {
+    align-self: flex-start;
+    font-style: italic;
+    color: #888;
+}
+
+/* Caixa de entrada do usuário */
+#userInput {
+    width: 80%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px;
+    background-color: #722F37;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
 body {
     background-color: #7B4F55;
     margin: 0;
