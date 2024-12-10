@@ -1,0 +1,97 @@
+.menu-toggle {
+    display: none; /* Oculta o botão por padrão */
+    flex-direction: column; /* Alinha as barras em coluna */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    position: absolute; /* Posiciona em relação ao contêiner pai */
+    top: 20px; /* Distância do topo */
+    right: 20px; /* Distância da direita */
+}
+
+.menu-toggle .bar {
+    height: 3px; /* Altura das barras */
+    width: 25px; /* Largura das barras */
+    background-color: white; /* Cor das barras */
+    margin: 3px 0; /* Espaçamento entre as barras */
+}
+
+.nav-list {
+    display: none; /* Oculta o menu por padrão */
+    position: absolute;
+    top: 60px; /* Distância do topo */
+    left: 50%; /* Posiciona o menu no meio da tela */
+    transform: translateX(-50%); /* Centraliza horizontalmente */
+    background-color: #722f37;
+    padding: 5px; /* Diminui o preenchimento interno do menu */
+    border-radius: 5px;
+    font-size: 18px; /* Aumenta o tamanho da fonte */
+    z-index: 1000; /* Certifique-se de que o menu esteja acima de outros elementos */
+    width: auto; /* Ajusta a largura do menu */
+}
+
+.nav-list li {
+    list-style: none;
+    margin: 5px 0;
+    padding: 5px; /* Opcional: diminui o preenchimento interno dos itens */
+}
+
+.nav-list.active {
+    display: block; /* Mostra o menu quando a classe 'active' é adicionada */
+    width: 100%; /* Largura total para o menu */
+}
+
+.button-container {
+    display: flex; /* Flexbox para alinhar os botões */
+    justify-content: center; /* Centraliza os botões */
+    margin-top: 10px; /* Margem superior para os botões */
+}
+
+@media (max-width: 768px) {
+    .nav-list {
+        display: none;
+        position: absolute; /* Mantém a posição absoluta */
+        top: 60px; /* Distância do topo */
+        left: 50%; /* Centraliza horizontalmente */
+        transform: translateX(-50%); /* Garante que o menu fique centralizado */
+        width: 100%; /* Ajuste a largura do menu */
+        max-width: 750px; /* Largura máxima */
+        padding: 10px; /* Um pouco de preenchimento */
+    }
+
+    .nav-list.active {
+    display: block;
+    left: 0; /* Remove o deslocamento */
+    right: 0; /* Garante que o menu se estenda até o final da tela */
+    transform: none; /* Remove a transformação para centralizar o menu corretamente */
+    width: 95%; /* Garante que o menu cubra toda a tela */
+    }
+
+    .menu-toggle {
+        display: flex; /* Mostra o botão hamburguer em telas pequenas */
+    }
+
+    .button-container {
+        display: none; /* Oculta os botões em telas menores */
+    }
+
+}
+
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none; /* Oculta o botão hambúrguer em telas maiores */
+    }
+
+   .nav-list {
+        display: flex; /* Mostra os links de navegação diretamente */
+        position: static; /* Remove a posição absoluta */
+        margin: 0 auto;
+        padding: 0;
+        background-color: transparent;
+        justify-content: center; /* Centraliza os itens */
+        width: auto;
+        margin-left: 520px; /* Adiciona uma margem à esquerda para movê-los à direita */
+   }
+
+    .nav-list li {
+        margin: 0 15px; /* Espaçamento entre os itens do menu */
+    }
+}

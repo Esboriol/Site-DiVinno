@@ -1,0 +1,603 @@
+html {
+    all: none;
+}
+
+body {
+    background-color: #7B4F55;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* Estilo do modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 500;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+}
+
+button {
+    background-color: #722F37;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #8c3b47;
+}
+
+.logo-wrapper {
+    flex: 0 0 auto; /* Garante que a logo não cresça ou encolha */
+}
+
+.separator {
+    width: 2px; /* Largura da barra */
+    height: 20px; /* Altura da barra */
+    background-color: white; /* Cor da barra */
+    margin: 0 15px; /* Margem entre os links */
+    display: inline-block; /* Faz a barra se comportar como um bloco inline */
+}
+
+ul {
+    list-style-type: none; /* Remove os bullets */
+    padding-left: 0; /* Remove o espaço à esquerda */
+}
+
+/* Caso esteja usando <ol> (lista ordenada), a mesma coisa */
+ol {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.nav-links a {
+    pointer-events: auto; /* Links funcionam por padrão */
+}
+
+.nav-links a.disabled {
+    pointer-events: none; /* Bloqueia os links */
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    margin-right: 131px; /* Ajuste para mover os links horizontalmente à direita */
+}
+
+.logo {
+    max-width: 100px;
+    height: auto;
+    width: 90px;
+    cursor: pointer;
+}
+
+.disabled-link {
+    color: #bbb;
+    pointer-events: none;
+}
+
+.cardapio, .contato, .sobre{
+    color: rgb(225, 224, 224);
+    text-decoration: none;
+    margin: 0 15px; /* Margem entre os links */
+    font-family: "Nunito Sans", sans-serif, helvetica, arial;
+}
+
+.sobre {
+    position: relative;
+    margin-left: 0; /* Remova o grande deslocamento para a esquerda */
+    text-align: center; /* Centraliza o texto */
+}
+
+.contato {
+    position: relative;
+    margin-right: 0px;
+}
+
+h1 {
+    color: white;
+    z-index: 2;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+h2, h3 {
+    margin: 0;
+}
+
+.seta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    font-family: 'Alfa Slab One', sans-serif;
+    color: #959074;
+    margin-bottom: 10px;
+}
+
+#mission p, #vision p, #values p {
+    font-size: 2vw;
+    margin: 10px;
+    line-height: 1.5;
+}
+
+p {
+    font-family: 'Aristotelica Pro Condensed', sans-serif;
+    color: #868268;
+    text-align: center;
+}
+
+#mission p, #vision p {
+    font-size: 14px;
+}
+
+#values p {
+    font-size: 9.3px;
+}
+
+.primeiro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 490px;
+    background-image: url("../img/Tops.jpg");
+    background-size: cover;
+    background-attachment: fixed; /* Para um efeito elegante */
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.primeiro::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.primeiro h2 {
+    color: white;
+    z-index: 2;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.rotulo {
+    position: relative;
+    display: inline-block; /* Para ajustar ao layout */
+    width: 300px; /* Tamanho do rótulo */
+    transform: translateY(-100px); /* Inicialmente um pouco abaixo, para "descer" */
+    opacity: 100%; /* Inicialmente invisível */
+    transition: opacity 0.8s ease, transform 0.8s ease; /* Transições suaves */
+}
+
+.rotulo img {
+  width: 100%; /* A imagem cobre toda a largura */
+  height: auto; /* Mantém a proporção */
+}
+
+.texto-rotulo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white; /* Contraste para o texto */
+}
+
+.titulo-rotulo {
+  font-size: 42px; /* Tamanho do título */
+  font-weight: bold;
+  margin: 0;
+  position: absolute;
+  top: 29.5%; /* Ajuste para o centro das duas linhas superiores */
+  transform: translateY(-50%);
+}
+
+.subtitulo-rotulo {
+    font-size: 13px; /* Tamanho do subtítulo */
+    width: 220px;
+    margin: 0;
+    position: absolute;
+    top: 65%; /* Posiciona abaixo das duas linhas */
+    transform: translateY(-50%);
+}
+
+.rotulos-container {
+    display: flex;
+    flex-wrap: wrap; /* Para permitir que os itens se reorganizem em telas menores */
+    justify-content: center; /* Centraliza os cartões */
+    gap: 20px; /* Espaçamento entre os cartões */
+    padding: 0 20px 20px 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o texto horizontalmente */
+    text-align: center;
+    background-color: #ffffff; /* Fundo branco para destaque */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
+    max-width: 300px; /* Largura máxima */
+    padding: 15px; /* Espaçamento interno */
+    transition: transform 0.3s ease; /* Animação ao passar o mouse */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Aumenta ligeiramente o tamanho ao passar o mouse */
+}
+
+.rotulo-img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px; /* Espaço entre o rótulo e o texto */
+}
+
+.card h3 {
+    font-size: 24px;
+    color: #722F37; /* Cor vinho */
+    margin: 10px 0;
+}
+
+.card p {
+    font-size: 14px;
+    color: #868268; /* Cor do texto */
+    line-height: 1.5;
+}
+
+#card {
+    width: 300px;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: url(../img/rotulo.png);
+    background-size: cover;
+    background-position: center center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#card h3 {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 90px;
+}
+
+#card p {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+#card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.letra_imagem {
+    opacity: 100%;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.letra_imagem.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.linha {
+    height: 2px; /* Altura da linha */
+    background-color: white; /* Cor da linha */
+    margin: 20px 0; /* Margens superior e inferior */
+}
+
+#plate {
+    position: relative;
+    margin: 0 auto;
+    height: 250px;
+    width: 250px;
+    border-bottom: solid 5px #B4B4B4;
+    border-radius: 0 0 10px 10px / 5px;
+}
+#plate:after {
+    position: absolute;
+    bottom: -10px;
+    content: " ";
+    margin: 0 25px;
+    width: 200px;
+    height: 5px;
+    background-color: #DDD;
+    border-radius: 0 0 5px 5px;
+}
+
+#bottle {
+    position: absolute;
+    width: 50px;
+    bottom: 0;
+    left: 100px;
+    z-index: 10;
+    cursor: pointer;
+}
+    #bottle .cork {
+        position: relative;
+        margin: 0 auto;
+        background-color: #8E1B1C;
+        width: 20px;
+        height: 40px;
+        border-radius: 2px 2px 0 0;
+        border-bottom: solid 3px #FBC85F;
+    }
+    #bottle .cork:before {
+        position: absolute;
+        top: 5px;
+        left: -2px;
+        display: block;
+        content: " ";
+        background-color: #8E1B10;
+        border-top: solid 1px #9A2A1F;
+        border-bottom: solid 1px #9A2A1F;
+
+        width: 24px;
+        height: 10px;
+        border-radius: 2px;
+    }
+    #bottle .neck {
+        margin: 0 auto;
+        background-color: rgba(41, 105, 70, 0.9);
+        width: 20px;
+        height: 10px;
+    }
+    #bottle .body {
+        position: relative;
+        margin: 0 auto;
+        padding-top: 30px;
+        background-color: rgba(41, 105, 70, 0.9);
+        width: 50px;
+        height: 110px;
+        border-radius: 20px 20px 5px 5px;
+    }
+    #bottle .body:before {
+        position: absolute;
+        display: block;
+        content: " ";
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 0px 0px 5px 5px;
+    }
+    #bottle .label {
+        position: relative;
+        background-color: #F2EAB9;
+        height: 30px;
+        border: solid 2px #CFC89B;
+        z-index: 25;
+        animation: spinning-label 3s linear infinite;
+    }
+    #bottle .label-shadow {
+        position: absolute;
+        height: 34px;
+        background-color: rgba(0, 0, 0, 0.3);
+        top: 30px;
+        z-index: 20;
+        animation: spinning-shadow 3s linear infinite;
+    }
+
+    @keyframes spinning-label {
+        0% {
+            margin-left: 0%;
+            border-left-width: 0px;
+            margin-right: 100%;
+            border-right-width: 2px;
+        }
+        49% {
+            border-left-width: 0px;
+            border-right-width: 2px;
+        }
+        50% {
+            margin-left: 0%;
+            border-left-width: 2px;
+            margin-right: 0%;
+            border-right-width: 0px;
+        }
+        98% {
+            border-left-width: 2px;
+        }
+        99% {
+            margin-left: 100%;
+            border-left-width: 0px;
+            margin-right: 0%;
+            border-right-width: 0px;
+        }
+        100% {
+            margin-left: 0%;
+            border-left-width: 0px;
+            margin-right: 100%;
+            border-right-width: 0px;
+        }
+    }
+
+    @keyframes spinning-shadow {
+        0% {
+            left: 0;
+            width: 50px;
+            margin-left: 0px;
+        }
+        50% {
+            left: 0;
+            width: 0px;
+            margin-left: 0px;
+        }
+        51% {
+
+            margin-left: 50px;
+        }
+        100% {
+            width: 50px;
+            margin-left: 0;
+        }
+    }
+
+#glass {
+    position: absolute;
+    width: 40px;
+    bottom: 0;
+    left: 100px;
+
+    animation: spinning-glass 3s ease-in-out infinite;
+}
+    @keyframes spinning-glass {
+        0% {
+            left: 25px;
+            z-index: 20;
+        }
+        50% {
+            left: 185px;
+            z-index: 20;
+        }
+        51% {
+            z-index: 0;
+        }
+        100% {
+            left: 25px;
+            z-index: 0;
+        }
+    }
+    #glass .bowl {
+        background-color: rgba(190, 190, 190, 0.5);
+        padding-top: 10px;
+        width: 40px;
+        height: 30px;
+        border-radius: 5px 5px 20px 20px / 20px;
+    }
+
+        #glass .bowl .wine {
+            background-color: #8E1B1C;
+            margin: 0 auto;
+            width: 30px;
+            height: 25px;
+            border-radius: 4px 4px 20px 20px / 20px;
+        }
+    #glass .stem {
+        margin: 0 auto;
+        background-color: rgba(190, 190, 190, 0.5);
+        width: 5px;
+        height: 30px;
+    }
+    #glass .foot {
+        background-color: rgba(190, 190, 190, 0.5);
+        width: 40px;
+        height: 5px;
+        border-radius: 20px 20px  0 0 / 5px;
+    }
+
+#cork {
+    position: absolute;
+    height: 25px;
+    width: 15px;
+    bottom: 0;
+    background-color: #F2EAB9;
+    border-top: solid 2px #8E1B1C;
+
+    animation: spinning-cork 3s ease-in-out infinite;
+}
+     @keyframes spinning-cork {
+        0% {
+            left: 150px;
+            z-index: 0;
+        }
+        50% {
+            left: 85px;
+            z-index: 0;
+        }
+        51% {
+            z-index: 20;
+        }
+        100% {
+            left: 150px;
+            z-index: 20;
+        }
+    }
+
+.botao-chat {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+    .visivel {
+        display: none;
+    }
+
+    .logo-rodape {
+        max-width: 200px;
+        width: 135px;
+    }
+
+    .vinho {
+        width: calc(50% - 15px);
+    }
+
+    .primeiro {
+        height: 200px;
+    }
+}
+
+ /* @media (prefers-color-scheme: dark) {
+    .logo-container {
+        background-color: red !important;
+    }
+}
+  */

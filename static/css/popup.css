@@ -1,0 +1,50 @@
+.popup {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.popup h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.buttons button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons #yes-button {
+    background-color: #4d1313; /* Verde */
+    color: white;
+}
+
+.buttons #no-button {
+    background-color: #5b0f0f; /* Vermelho */
+    color: white;
+}
+
+.buttons button:hover {
+    opacity: 0.8;
+}

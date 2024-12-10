@@ -1,0 +1,104 @@
+.container {
+    width: 80%; /* Mantém boa largura em telas menores */
+    max-width: 1200px; /* Limite para telas grandes */
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif; /* Fonte padrão */
+    color: #333; /* Cor principal do texto */
+}
+
+/* Seção de detalhes do vinho */
+.vinho-detalhes {
+    display: flex;
+    justify-content: space-between; /* Espaça imagem e informações */
+    align-items: flex-start; /* Alinha os itens ao topo */
+    gap: 20px; /* Espaçamento entre imagem e texto */
+    flex-wrap: wrap; /* Permite quebra em telas menores */
+}
+
+/* Imagem do vinho */
+.imagem-vinho img {
+    max-width: 100%; /* Evita que ultrapasse os limites do contêiner */
+    height: auto; /* Mantém proporção */
+    border-radius: 10px; /* Bordas suavizadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+}
+
+/* Informações do vinho */
+.informacoes-vinho {
+    flex: 1; /* Ocupa o espaço restante */
+    max-width: 600px; /* Limita a largura para melhorar leitura */
+}
+
+.informacoes-vinho p {
+    font-size: 18px;
+    line-height: 1.8; /* Espaçamento entre linhas */
+    margin-bottom: 10px; /* Espaço entre parágrafos */
+}
+
+/* Estilização do botão "Voltar ao Cardápio" */
+.botao-voltar {
+    display: inline-block;
+    background-color: #FF8C00; /* Fundo laranja */
+    color: #fff; /* Texto branco */
+    padding: 12px 24px; /* Espaçamento interno maior */
+    font-size: 16px;
+    font-weight: bold;
+    border: none; /* Remove bordas padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de ponteiro */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
+    text-align: center;
+    width: fit-content; /* Adapta largura ao conteúdo */
+    margin: 10px 0; /* Espaçamento acima e abaixo */
+}
+
+.botao-voltar a {
+    color: inherit; /* Mantém a cor do botão */
+    text-decoration: none; /* Remove sublinhado */
+}
+
+/* Efeitos do botão */
+.botao-voltar:hover {
+    background-color: #e07600; /* Laranja mais escuro ao passar o mouse */
+}
+
+.botao-voltar:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduz a sombra ao clicar */
+    transform: translateY(1px); /* Simula o pressionamento */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .vinho-detalhes {
+        flex-direction: column; /* Empilha imagem e texto */
+        align-items: center; /* Centraliza os itens */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    .imagem-vinho img {
+        max-width: 80%; /* Ajusta imagem em telas pequenas */
+        margin-bottom: 20px;
+    }
+
+    .informacoes-vinho {
+        max-width: 100%; /* Texto ocupa toda a largura */
+    }
+
+    .botao-voltar {
+        width: 100%; /* Botão ocupa toda a largura */
+        padding: 14px; /* Maior espaçamento em telas menores */
+        font-size: 18px; /* Aumenta o tamanho do texto */
+    }
+}
+
+/* Ajustes para telas muito grandes */
+@media (min-width: 1200px) {
+    .container {
+        padding: 40px; /* Aumenta o espaçamento geral */
+    }
+
+    .informacoes-vinho p {
+        font-size: 20px; /* Texto maior para legibilidade */
+    }
+}

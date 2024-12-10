@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0; /* Remover o height para evitar limitar o espaço de altura */
+}
+
+.form-sections {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.left-section, .right-section {
+    width: 45%;
+}
+
+.left-section input[type="text"],
+.left-section input[type="email"],
+.left-section input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 30px; /* Aumentei o espaçamento */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.left-section label, .right-section label {
+    font-size: 14px;
+    color: #5a1d1d;
+}
+
+.right-section {
+    font-size: 20px;
+    color: #5a1d1d;
+}
+
+.right-section div {
+    margin-top: 15px;
+}
+
+.message-section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.message-section textarea {
+    width: 40%;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-left: 52%;
+    margin-top: -13%;
+
+}
+
+.center-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #5a1d1d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #7a3333;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .form-sections {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .left-section, .right-section {
+        width: 100%;
+        margin: 0;
+    }
+
+    .left-section input[type="text"],
+    .left-section input[type="email"],
+    .left-section input[type="tel"] {
+        margin: 10px 0;
+        width: 90%;
+    }
+    .right-section {
+        margin-top: 0;
+    }
+
+    .message-section textarea {
+        width: 90%;
+        margin-left: 0;
+        margin-top: 5%;
+    }
+
+    .message-section {
+
+        left: 0;
+        width: 90%;
+    }
+}

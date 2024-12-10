@@ -1,0 +1,155 @@
+body {
+    background-color: #7B4F55;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    display: flex; /* Centraliza conteúdo */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que o conteúdo ocupe toda a altura da tela */
+    flex-direction: column; /* Organiza os elementos na coluna */
+}
+
+.chat-container {
+    width: 60%; /* Ajusta a largura da caixa */
+    height: 80vh; /* Ajusta a altura da caixa para 80% da tela */
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Garante que o conteúdo não extrapole */
+    margin-top: 20px; /* Espaço superior */
+    margin-bottom: 20px; /* Espaço inferior */
+}
+
+.chat-header {
+    background-color: #6c2121;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 1.5rem;
+}
+
+.chat-window {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto; /* Rolagem interna */
+    background-color: #e9ecef;
+}
+
+.message {
+    margin: 10px 20px;
+    padding: 10px;
+    border-radius: 8px;
+    /* max-width: 75%; */
+    word-wrap: break-word;
+}
+
+.message.user {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+}
+
+.message.bot {
+    background-color: #fff;
+    color: black;
+    align-self: flex-start;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #4d1313;
+    background-color: #fff;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.chat-input button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background-color: #0056b3;
+}
+
+.message.bot span {
+    white-space: pre-wrap;   /* Mantém quebras de linha */
+    word-wrap: break-word;   /* Quebra palavras longas */
+    overflow-wrap: break-word; /* Alternativa moderna */
+}
+
+hr {
+    border: 0; /* Remove a borda padrão */
+    height: 2px; /* Altura da linha */
+    background-color: red; /* Cor da linha */
+    margin: 20px 0; /* Margens superior e inferior */
+}
+
+.logo-content-rodape {
+    display: flex; /* Usa flexbox para alinhar os itens */
+    align-items: center; /* Alinha verticalmente os itens no centro */
+    margin-bottom: 01px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #722F37;
+}
+
+.logo-rodape {
+    max-width: 100px;
+    height: auto;
+    width: 90px;
+    cursor: pointer;
+}
+
+.linha {
+    height: 2px; /* Altura da linha */
+    background-color: white; /* Cor da linha */
+    margin: 20px 0; /* Margens superior e inferior */
+}
+
+.paragrafos {
+    display: inline-block; /* Permite que os parágrafos fiquem lado a lado */
+    width: 100%; /* Ajusta a largura do contêiner para que os parágrafos ocupem toda a linha */
+}
+
+.paragrafos p {
+    display: inline; /* Coloca os parágrafos lado a lado */
+    color: white;
+    margin-right: 300px;
+}
+
+.paragrafos p:last-child {
+    margin-right: 0;
+}
+
+.visivel {
+    display: block;
+}
+
+@media (max-width: 768px) {
+
+    .visivel {
+        display: none;
+    }
+
+    .logo-rodape {
+        max-width: 200px;
+        width: 135px;
+    }
+}

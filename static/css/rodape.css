@@ -1,0 +1,59 @@
+hr {
+    border: 0; /* Remove a borda padrão */
+    height: 2px; /* Altura da linha */
+    background-color: red; /* Cor da linha */
+    margin: 20px 0; /* Margens superior e inferior */
+    width: 110%; /* Faz com que a linha ocupe 100% da largura da tela */
+    position: relative;
+    left: 0; /* Garante que a linha comece do lado esquerdo */
+}
+
+.logo-content-rodape {
+    display: flex; /* Usa flexbox para alinhar os itens */
+    align-items: center; /* Alinha verticalmente os itens no centro */
+    margin-bottom: 01px;
+    padding: 10px;
+    background-color: #722F37;
+}
+
+.logo-rodape {
+    max-width: 100px;
+    height: auto;
+    width: 90px;
+    cursor: pointer;
+}
+
+.linha {
+    height: 2px; /* Altura da linha */
+    background-color: white; /* Cor da linha */
+    margin: 20px 0; /* Margens superior e inferior */
+}
+
+.paragrafos {
+    display: flex; /* Usando flexbox para alinhar os parágrafos */
+    justify-content: space-between; /* Alinha os parágrafos nos extremos (esquerda e direita) */
+    width: 100%; /* Garante que o contêiner ocupe 100% da largura da tela */
+    align-items: center; /* Alinha os itens verticalmente no centro */
+}
+
+.paragrafos p {
+    color: white;
+    margin: 0; /* Remove margens extras */
+    flex: 1; /* Faz com que cada parágrafo ocupe o mesmo espaço */
+    text-align: center; /* Alinha o texto ao centro */
+}
+
+.visivel {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .visivel {
+        display: none;
+    }
+
+    .logo-rodape {
+        max-width: 200px;
+        width: 135px;
+    }
+}

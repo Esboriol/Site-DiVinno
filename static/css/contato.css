@@ -1,0 +1,56 @@
+body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+h2, h3 {
+    margin: 0;
+}
+
+h3 {
+    color: #722F37;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+p {
+    text-align: center;
+    margin: 0; /* Remove a margem padrão do parágrafo */
+    color: #333;
+}
+
+/* Estilização das seções */
+.section {
+    padding: 30px 20px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    background-color: #F8F8F8; /* Fundo leve para as caixinhas */
+    border: 1px solid #ddd; /* Borda sutil */
+    border-radius: 8px; /* Canto arredondado */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    max-width: 600px; /* Largura máxima das caixinhas */
+    margin: 20px auto; /* Centraliza horizontalmente e adiciona espaço entre elas */
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.logo-container {
+    display: flex; /* Usa flexbox para alinhar os itens */
+    align-items: center; /* Alinha verticalmente os itens no centro */
+    justify-content: space-between; /* Espaça os itens */
+    margin-bottom: 1px;
+    padding: 20px;
+    background-color: #722F37;
+}
+
+.logo-wrapper {
+    flex: 0 0 auto; /* Garante que a logo não cresça ou encolha */
+}
+

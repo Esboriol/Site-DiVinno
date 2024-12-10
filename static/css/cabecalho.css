@@ -1,0 +1,96 @@
+
+.logo-container button,
+.logo-container a {
+    outline: none; /* Remove a bolinha preta ao focar */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #722F37;
+    width: 100%; /* Garante que ocupa toda a largura */
+    margin: 0; /* Remove margens externas */
+    box-sizing: border-box; /* Inclui padding dentro da largura */
+}
+
+.logo-container {
+    display: flex; /* Usa flexbox para alinhar os itens */
+    align-items: center; /* Alinha verticalmente os itens no centro */
+    justify-content: space-between; /* Espaça os itens */
+    margin-bottom: 1px;
+    padding: 20px;
+    background-color: #722F37;
+}
+
+.logo-wrapper {
+    flex: 0 0 auto; /* Garante que a logo não cresça ou encolha */
+}
+
+.separator {
+    width: 2px; /* Largura da barra */
+    height: 20px; /* Altura da barra */
+    background-color: white; /* Cor da barra */
+    margin: 0 15px; /* Margem entre os links */
+    display: inline-block; /* Faz a barra se comportar como um bloco inline */
+}
+
+.logo {
+    max-width: 100px;
+    height: auto;
+    width: 90px;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a {
+    color: rgb(225, 224, 224);
+    text-decoration: none;
+    font-size: 15px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.cardapio, .contato, .sobre{
+    color: rgb(225, 224, 224);
+    text-decoration: none;
+    margin: 0 15px; /* Margem entre os links */
+    font-family: "Nunito Sans", sans-serif, helvetica, arial;
+}
+
+ul {
+    list-style-type: none; /* Remove o marcador */
+    padding: 0; /* Remove o espaçamento padrão da lista */
+}
+
+li {
+    padding-left: 0; /* Remove o espaçamento à esquerda dos itens */
+}
+
+.sobre {
+    position: relative;
+    margin-left: 0; /* Remova o grande deslocamento para a esquerda */
+    font-size: 18px;
+    text-align: center; /* Centraliza o texto */
+}
+
+.contato {
+    position: relative;
+    margin-right: 0;
+    font-size: 18px;
+}
+
+.cardapio {
+    position: relative;
+    margin-right: 0;
+    font-size: 18px;
+}
+
+li {
+
+}
