@@ -7,7 +7,6 @@ import json
 
 load_dotenv()
 
-# Configurar a API uma única vez
 genai.configure(api_key=os.getenv('API'))
 model = genai.GenerativeModel('gemini-1.5-flash')
 
