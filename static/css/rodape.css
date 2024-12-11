@@ -52,6 +52,9 @@
     .paragrafos {
         display: none; /* Esconde os parágrafos em telas pequenas */
     }
+    .linha-vertical {
+        display: none;
+    }
 }
 
 /* Garante que o rodapé vá até o final da página */
