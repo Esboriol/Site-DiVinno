@@ -4,11 +4,10 @@
     align-items: center;
     background-color: #722F37;
     padding: 10px 20px;
-    justify-content: flex-start; /* Logo à esquerda */
-    position: relative;
+    justify-content: flex-start;
+    position: relative; /* Para posicionar a linha vertical */
     width: 100%;
     box-sizing: border-box;
-    margin-top: auto; /* Garante que o rodapé fique no final da página */
 }
 
 /* Logo à esquerda */
@@ -18,11 +17,21 @@
     cursor: pointer;
 }
 
+/* Linha vertical */
+.linha-vertical {
+    width: 2px; /* Largura da linha */
+    height: 50px; /* Ajuste a altura da linha conforme necessário */
+    background-color: white;
+    position: absolute; /* Para posicionar a linha vertical */
+    left: 120px; /* Distância entre a logo e a linha */
+    top: 10px; /* Ajuste o valor para alinhar a linha com o topo da logo */
+}
+
 /* Parágrafos (texto abaixo da linha) */
 .paragrafos {
     display: flex;
     justify-content: space-between; /* Coloca o texto nos extremos (esquerda e direita) */
-    width: calc(100% - 140px); /* Garante que o texto fique à direita da logo */
+    width: calc(100% - 140px); /* Garante que o texto fique à direita da linha */
     margin-top: 20px; /* Distância entre a linha e o texto */
     padding-left: 20px; /* Move o texto para a direita */
     transform: translateY(-5px); /* Move o texto para cima */
